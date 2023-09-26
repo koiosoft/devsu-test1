@@ -1,0 +1,35 @@
+div.container {
+  margin: 30px 30px;
+  padding: 30px 30px;
+}
+
+div.container input {
+  height: 40px;
+  width: 150px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+div.container button {
+  background-color: #ffdf00;
+  color: black;
+  width: 100px;
+  height: 50px;
+  border: 0px;
+}
+
+div.container div.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+div.container table {
+  background-color: white;
+  width: 100%;
+}
+
+div.container table tr {
+  height: 60px;
+}
