@@ -80,7 +80,7 @@
                 #releaseCheck="ngModel"
                 [(ngModel)]="product.releaseCheck"
                 [class.error]="hasErrors(releaseCheck)"
-                min="{{ minDate | date : 'yyyy-MM-dd' }}"
+                min="{{ minDateRelease | date : 'yyyy-MM-dd' }}"
                 minCurrentDate
                 required
               />

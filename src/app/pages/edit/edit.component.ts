@@ -92,7 +92,7 @@ export class EditComponent {
     }
   }
 
-  get minDate() {
+  get minDateRelease() {
     return new Date();
   }
 }
