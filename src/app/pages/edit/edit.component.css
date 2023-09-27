@@ -1,0 +1,100 @@
+div.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+div.container .wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+div.container div.form {
+  padding: 10px;
+}
+
+div.container div.tools {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+div.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+div.row div.field {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.row div.field label {
+  margin-bottom: 10px;
+}
+
+div.container form div.row div.field input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px inset #2f2e2e;
+}
+
+.container form .row .field input.error {
+  border: 1px solid red;
+}
+
+div.container form span.error {
+  color: red;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+div.form {
+  background-color: white;
+  padding: 5px;
+}
+
+div.form div.header {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+div.form div.body {
+  background-color: white;
+  padding: 40px;
+}
+
+div.container button {
+  background-color: lightgray;
+  color: navy;
+  font-weight: 500;
+  width: 7em;
+  height: 4em;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+div.container button.submit {
+  background-color: #ffdf00;
+  color: black;
+  width: 7em;
+  height: 4em;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+}
