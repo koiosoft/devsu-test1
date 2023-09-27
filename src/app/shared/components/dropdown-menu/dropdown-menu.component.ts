@@ -27,7 +27,6 @@ export class DropdownMenuComponent {
   }
 
   toogle() {
-    console.log('tootle');
     this.showing = !this.showing;
   }
 }
