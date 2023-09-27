@@ -27,7 +27,11 @@ export class EditComponent {
     for (var name in f.controls) {
       f.controls[name].markAsTouched({ onlySelf: true });
     }
-    console.log('Product to sent', f);
+  }
+
+  reset(f: NgForm) {
+    f.reset();
+    f.resetForm();
   }
 
   hasErrors(field: NgModel) {
@@ -35,5 +39,12 @@ export class EditComponent {
       return true;
     }
     return false;
+  }
+
+  getErrorField(field: NgModel) {
+    if (field.invalid && (field.dirty || field.touched)) {
+      return 'El campo tiene errores';
+    }
+    return '';
   }
 }

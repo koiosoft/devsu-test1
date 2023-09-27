@@ -15,7 +15,9 @@
                 #id="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(id)">ID no válido</span>
+              <span class="error" *ngIf="hasErrors(id)">{{
+                getErrorField(id)
+              }}</span>
             </div>
             <div class="field">
               <label>Nombre</label>
@@ -27,9 +29,9 @@
                 #name="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(name)"
-                >Nombre no válido</span
-              >
+              <span class="error" *ngIf="hasErrors(name)">{{
+                getErrorField(name)
+              }}</span>
             </div>
           </div>
           <div class="row">
@@ -43,9 +45,9 @@
                 #description="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(description)"
-                >Descripción inválida</span
-              >
+              <span class="error" *ngIf="hasErrors(description)">{{
+                getErrorField(description)
+              }}</span>
             </div>
             <div class="field">
               <label>Logo</label>
@@ -57,7 +59,9 @@
                 #logo="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(logo)">Logo no válido</span>
+              <span class="error" *ngIf="hasErrors(logo)">{{
+                getErrorField(logo)
+              }}</span>
             </div>
           </div>
           <div class="row">
@@ -71,9 +75,9 @@
                 #releaseCheck="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(releaseCheck)"
-                >Fecha inválida</span
-              >
+              <span class="error" *ngIf="hasErrors(releaseCheck)">{{
+                getErrorField(releaseCheck)
+              }}</span>
             </div>
             <div class="field">
               <label>Fecha de revisión</label>
@@ -85,13 +89,15 @@
                 #reviewCheck="ngModel"
                 [class.error]="hasErrors(id)"
               />
-              <span class="error" *ngIf="hasErrors(reviewCheck)"
-                >Fecha inválida</span
-              >
+              <span class="error" *ngIf="hasErrors(reviewCheck)">{{
+                getErrorField(reviewCheck)
+              }}</span>
             </div>
           </div>
           <div class="tools">
-            <button>Reiniciar</button>
+            <button type="button" (click)="reset(productForm)">
+              Reiniciar
+            </button>
             <button class="submit">Enviar</button>
           </div>
         </form>
