@@ -1,7 +1,7 @@
 <div class="container">
   <div class="tools">
     <input type="text" placeholder="Search..." />
-    <button onclick="alert('test')">Agregar</button>
+    <button [routerLink]="['../products', 'new']">Agregar</button>
   </div>
   <div class="datagrid">
     <table>
@@ -24,7 +24,9 @@
           <td>Descripción producto</td>
           <td>01/04/2023</td>
           <td>01/04/2023</td>
-          <td class="actions"><span></span></td>
+          <td class="actions">
+            <app-dropdown-menu></app-dropdown-menu>
+          </td>
         </tr>
         <tr>
           <td class="logo">
@@ -34,7 +36,9 @@
           <td>Descripción producto</td>
           <td>01/04/2023</td>
           <td>01/04/2023</td>
-          <td class="actions"><span></span></td>
+          <td class="actions">
+            <app-dropdown-menu></app-dropdown-menu>
+          </td>
         </tr>
         <tr>
           <td class="logo">
@@ -44,7 +48,9 @@
           <td>Descripción producto</td>
           <td>01/04/2023</td>
           <td>01/04/2023</td>
-          <td class="actions"><span></span></td>
+          <td class="actions">
+            <app-dropdown-menu></app-dropdown-menu>
+          </td>
         </tr>
       </tbody>
     </table>
