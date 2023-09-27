@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, NgForm, NgModel } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NgForm,
+  NgModel,
+  ValidatorFn,
+} from '@angular/forms';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 
 const defaultProduct = {
@@ -84,5 +90,9 @@ export class EditComponent {
       default:
         return 'Campo no válido!';
     }
+  }
+
+  get minDate() {
+    return new Date();
   }
 }

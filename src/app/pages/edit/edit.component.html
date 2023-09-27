@@ -75,11 +75,13 @@
             <div class="field">
               <label>Fecha de liberación</label>
               <input
-                type="text"
+                type="date"
                 name="release-check"
                 #releaseCheck="ngModel"
                 [(ngModel)]="product.releaseCheck"
                 [class.error]="hasErrors(releaseCheck)"
+                min="{{ minDate | date : 'yyyy-MM-dd' }}"
+                minCurrentDate
                 required
               />
               <span class="error" *ngIf="hasErrors(releaseCheck)">{{
