@@ -1,61 +1,62 @@
 <div class="container">
   <div class="tools">
-    <input type="text" placeholder="Search" />
-    <button>Agregar</button>
+    <input type="text" placeholder="Search..." />
+    <button onclick="alert('test')">Agregar</button>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <td>Logo</td>
-        <td>Nombre del producto</td>
-        <td>Descripción</td>
-        <td>Fecha de liberación</td>
-        <td>Fecha de reestructuración</td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <img src="{{ testImageUrl }}" width="50" />
-        </td>
-        <td>Nombre del producto</td>
-        <td>Descripción producto</td>
-        <td>01/04/2023</td>
-        <td>01/04/2023</td>
-        <td>...</td>
-      </tr>
-      <tr>
-        <td>
-          <img src="{{ testImageUrl }}" width="50" />
-        </td>
-        <td>Nombre del producto</td>
-        <td>Descripción producto</td>
-        <td>01/04/2023</td>
-        <td>01/04/2023</td>
-        <td>...</td>
-      </tr>
-      <tr>
-        <td>
-          <img src="{{ testImageUrl }}" width="50" />
-        </td>
-        <td>Nombre del producto</td>
-        <td>Descripción producto</td>
-        <td>01/04/2023</td>
-        <td>01/04/2023</td>
-        <td>...</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td>
-          <select>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="datagrid">
+    <table>
+      <thead>
+        <tr>
+          <th class="logo">Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="logo">
+            <img src="{{ testImageUrl }}" />
+          </td>
+          <td>Nombre del producto</td>
+          <td>Descripción producto</td>
+          <td>01/04/2023</td>
+          <td>01/04/2023</td>
+          <td class="actions"><span></span></td>
+        </tr>
+        <tr>
+          <td class="logo">
+            <img src="{{ testImageUrl }}" />
+          </td>
+          <td>Nombre del producto</td>
+          <td>Descripción producto</td>
+          <td>01/04/2023</td>
+          <td>01/04/2023</td>
+          <td class="actions"><span></span></td>
+        </tr>
+        <tr>
+          <td class="logo">
+            <img src="{{ testImageUrl }}" />
+          </td>
+          <td>Nombre del producto</td>
+          <td>Descripción producto</td>
+          <td>01/04/2023</td>
+          <td>01/04/2023</td>
+          <td class="actions"><span></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer">
+      <div class="total">
+        <span>5 Resultados</span>
+      </div>
+      <select class="pager">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+  </div>
 </div>
