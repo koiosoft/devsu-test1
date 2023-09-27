@@ -1,7 +1,7 @@
 <div #dropdown_container class="dropdown">
   <span #dropdown_button (click)="toogle()" class="button"></span>
   <div #dropdown_menu id="menu" class="dropdown-content" [class.show]="showing">
-    <a href="#home">Editar</a>
-    <a href="#about">Borrar</a>
+    <a [routerLink]="['../products', id]">Editar</a>
+    <a (click)="delete()">Borrar</a>
   </div>
 </div>

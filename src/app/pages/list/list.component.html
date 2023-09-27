@@ -25,7 +25,10 @@
           <td>01/04/2023</td>
           <td>01/04/2023</td>
           <td class="actions">
-            <app-dropdown-menu></app-dropdown-menu>
+            <app-dropdown-menu
+              id="1"
+              (onDelete)="delete($event)"
+            ></app-dropdown-menu>
           </td>
         </tr>
         <tr>
@@ -37,7 +40,10 @@
           <td>01/04/2023</td>
           <td>01/04/2023</td>
           <td class="actions">
-            <app-dropdown-menu></app-dropdown-menu>
+            <app-dropdown-menu
+              id="2"
+              (onDelete)="delete($event)"
+            ></app-dropdown-menu>
           </td>
         </tr>
         <tr>
@@ -49,7 +55,10 @@
           <td>01/04/2023</td>
           <td>01/04/2023</td>
           <td class="actions">
-            <app-dropdown-menu></app-dropdown-menu>
+            <app-dropdown-menu
+              id="3"
+              (onDelete)="delete($event)"
+            ></app-dropdown-menu>
           </td>
         </tr>
       </tbody>

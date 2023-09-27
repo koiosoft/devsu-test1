@@ -1,4 +1,12 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-menu',
@@ -11,6 +19,11 @@ export class DropdownMenuComponent {
   @ViewChild('dropdown_button ') drowdownButton: ElementRef | undefined =
     undefined;
   @ViewChild('dropdown_menu ') drowdownMenu: ElementRef | undefined = undefined;
+
+  @Input({ required: true }) id!: string;
+
+  @Output('onDelete')
+  eventDelete = new EventEmitter<string>();
 
   showing = false;
 
@@ -28,5 +41,9 @@ export class DropdownMenuComponent {
 
   toogle() {
     this.showing = !this.showing;
+  }
+
+  delete() {
+    this.eventDelete.emit(this.id);
   }
 }
