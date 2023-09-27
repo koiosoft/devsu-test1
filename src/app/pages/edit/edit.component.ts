@@ -43,8 +43,27 @@ export class EditComponent {
 
   getErrorField(field: NgModel) {
     if (field.invalid && (field.dirty || field.touched)) {
-      return 'El campo tiene errores';
+      return `${this.getErrorLabel(field.name)}`;
     }
     return '';
+  }
+
+  getErrorLabel(fieldName: string) {
+    switch (fieldName) {
+      case 'id':
+        return 'ID no válido!';
+      case 'name':
+        return 'Nombre no válido!';
+      case 'description':
+        return 'Descripción no válido!';
+      case 'logo':
+        return 'Logo no válido';
+      case 'release-check':
+        return 'Fecha de Liberación no válida!';
+      case 'review-check':
+        return 'Fecha de Revisión no válida!';
+      default:
+        return 'Campo no válido!';
+    }
   }
 }
