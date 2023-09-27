@@ -48,6 +48,25 @@ export class EditComponent {
     return '';
   }
 
+  checkField(fieldName: string) {
+    switch (fieldName) {
+      case 'id':
+        return false;
+      case 'name':
+        return false;
+      case 'description':
+        return false;
+      case 'logo':
+        return false;
+      case 'release-check':
+        return false;
+      case 'review-check':
+        return false;
+      default:
+        return true;
+    }
+  }
+
   getErrorLabel(fieldName: string) {
     switch (fieldName) {
       case 'id':

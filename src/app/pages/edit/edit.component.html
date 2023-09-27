@@ -10,10 +10,12 @@
               <input
                 type="text"
                 name="id"
-                [(ngModel)]="product.id"
-                required
                 #id="ngModel"
+                [(ngModel)]="product.id"
                 [class.error]="hasErrors(id)"
+                minlength="3"
+                maxlength="10"
+                required
               />
               <span class="error" *ngIf="hasErrors(id)">{{
                 getErrorField(id)
@@ -24,10 +26,12 @@
               <input
                 type="text"
                 name="name"
-                [(ngModel)]="product.name"
-                required
                 #name="ngModel"
-                [class.error]="hasErrors(id)"
+                [(ngModel)]="product.name"
+                [class.error]="hasErrors(name)"
+                minlength="5"
+                maxlength="100"
+                required
               />
               <span class="error" *ngIf="hasErrors(name)">{{
                 getErrorField(name)
@@ -40,10 +44,12 @@
               <input
                 type="text"
                 name="description"
-                [(ngModel)]="product.description"
-                required
                 #description="ngModel"
-                [class.error]="hasErrors(id)"
+                [(ngModel)]="product.description"
+                [class.error]="hasErrors(description)"
+                minlength="10"
+                maxlength="200"
+                required
               />
               <span class="error" *ngIf="hasErrors(description)">{{
                 getErrorField(description)
@@ -52,12 +58,13 @@
             <div class="field">
               <label>Logo</label>
               <input
-                type="text"
+                type="url"
                 name="logo"
-                [(ngModel)]="product.logo"
-                required
                 #logo="ngModel"
-                [class.error]="hasErrors(id)"
+                [(ngModel)]="product.logo"
+                [class.error]="hasErrors(logo)"
+                pattern="(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))"
+                required
               />
               <span class="error" *ngIf="hasErrors(logo)">{{
                 getErrorField(logo)
@@ -70,10 +77,10 @@
               <input
                 type="text"
                 name="release-check"
-                [(ngModel)]="product.releaseCheck"
-                required
                 #releaseCheck="ngModel"
-                [class.error]="hasErrors(id)"
+                [(ngModel)]="product.releaseCheck"
+                [class.error]="hasErrors(releaseCheck)"
+                required
               />
               <span class="error" *ngIf="hasErrors(releaseCheck)">{{
                 getErrorField(releaseCheck)
@@ -84,10 +91,10 @@
               <input
                 type="text"
                 name="review-check"
-                [(ngModel)]="product.reviewCheck"
-                required
                 #reviewCheck="ngModel"
-                [class.error]="hasErrors(id)"
+                [(ngModel)]="product.reviewCheck"
+                [class.error]="hasErrors(reviewCheck)"
+                required
               />
               <span class="error" *ngIf="hasErrors(reviewCheck)">{{
                 getErrorField(reviewCheck)
