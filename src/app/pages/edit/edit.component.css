@@ -17,10 +17,14 @@ div.container div.form {
   padding: 10px;
 }
 
+div.container div.form input:focus,
+button:focus {
+  outline: none;
+}
+
 div.container div.tools {
   display: flex;
   justify-content: center;
-  padding-bottom: 30px;
 }
 
 div.row {

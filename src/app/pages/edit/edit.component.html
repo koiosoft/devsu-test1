@@ -3,49 +3,99 @@
     <div class="form">
       <div class="header"><h2>Formulario de Registro</h2></div>
       <div class="body">
-        <form>
+        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
           <div class="row">
             <div class="field">
               <label>ID</label>
-              <input type="text" name="id" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="id"
+                [(ngModel)]="product.id"
+                required
+                #id="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(id)">ID no válido</span>
             </div>
             <div class="field">
               <label>Nombre</label>
-              <input type="text" name="name" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="name"
+                [(ngModel)]="product.name"
+                required
+                #name="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(name)"
+                >Nombre no válido</span
+              >
             </div>
           </div>
           <div class="row">
             <div class="field">
               <label>Descripción</label>
-              <input type="text" name="description" class="error" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="description"
+                [(ngModel)]="product.description"
+                required
+                #description="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(description)"
+                >Descripción inválida</span
+              >
             </div>
             <div class="field">
               <label>Logo</label>
-              <input type="text" name="logo" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="logo"
+                [(ngModel)]="product.logo"
+                required
+                #logo="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(logo)">Logo no válido</span>
             </div>
           </div>
           <div class="row">
             <div class="field">
               <label>Fecha de liberación</label>
-              <input type="text" name="release-check" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="release-check"
+                [(ngModel)]="product.releaseCheck"
+                required
+                #releaseCheck="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(releaseCheck)"
+                >Fecha inválida</span
+              >
             </div>
             <div class="field">
               <label>Fecha de revisión</label>
-              <input type="text" name="review-check" />
-              <span class="error">Mensaje de Error</span>
+              <input
+                type="text"
+                name="review-check"
+                [(ngModel)]="product.reviewCheck"
+                required
+                #reviewCheck="ngModel"
+                [class.error]="hasErrors(id)"
+              />
+              <span class="error" *ngIf="hasErrors(reviewCheck)"
+                >Fecha inválida</span
+              >
             </div>
+          </div>
+          <div class="tools">
+            <button>Reiniciar</button>
+            <button class="submit">Enviar</button>
           </div>
         </form>
       </div>
-    </div>
-    <div class="tools">
-      <button>Reiniciar</button>
-      <button class="submit">Enviar</button>
     </div>
   </div>
 </div>
