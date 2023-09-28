@@ -46,6 +46,11 @@ div.row div.field label {
   margin-bottom: 10px;
 }
 
+div.row div.field input:disabled {
+  border: 1px solid #8f8e8e55 !important;
+  background-color: #f6f6f6;
+}
+
 div.container form div.row div.field input {
   height: 40px;
   border-radius: 5px;
