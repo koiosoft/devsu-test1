@@ -1,6 +1,6 @@
 <div class="container">
   <div class="tools">
-    <input type="text" placeholder="Search..." />
+    <input type="text" placeholder="Search ..." (input)="onSearch($event)" />
     <button [routerLink]="['../products', 'new']">Agregar</button>
   </div>
   <div class="datagrid">
