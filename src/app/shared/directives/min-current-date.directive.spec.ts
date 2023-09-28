@@ -1,8 +1,8 @@
-import { MinCurrentDateDirective } from './min-current-date.directive';
+import { DateRangeContraintDirective } from './min-current-date.directive';
 
 describe('MinCurrentDateDirective', () => {
   it('should create an instance', () => {
-    const directive = new MinCurrentDateDirective();
+    const directive = new DateRangeContraintDirective();
     expect(directive).toBeTruthy();
   });
 });

@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './layouts/main/main.component';
 import { RouterModule } from '@angular/router';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
-import { MinCurrentDateDirective } from './directives/min-current-date.directive';
+import { DateRangeContraintDirective } from './directives/min-current-date.directive';
 
 @NgModule({
-  declarations: [MainComponent, DropdownMenuComponent, MinCurrentDateDirective],
+  declarations: [
+    MainComponent,
+    DropdownMenuComponent,
+    DateRangeContraintDirective,
+  ],
   imports: [CommonModule, RouterModule],
-  exports: [DropdownMenuComponent, MinCurrentDateDirective],
+  exports: [DropdownMenuComponent, DateRangeContraintDirective],
 })
 export class SharedModule {}
