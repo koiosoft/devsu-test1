@@ -4,6 +4,8 @@ import { MainComponent } from './layouts/main/main.component';
 import { RouterModule } from '@angular/router';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
 import { DateRangeContraintDirective } from './directives/min-current-date.directive';
+import { ProductService } from './services/product.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,12 @@ import { DateRangeContraintDirective } from './directives/min-current-date.direc
     DropdownMenuComponent,
     DateRangeContraintDirective,
   ],
-  imports: [CommonModule, RouterModule],
-  exports: [DropdownMenuComponent, DateRangeContraintDirective],
+  imports: [CommonModule, RouterModule, HttpClientModule],
+  providers: [ProductService],
+  exports: [
+    DropdownMenuComponent,
+    DateRangeContraintDirective,
+    HttpClientModule,
+  ],
 })
 export class SharedModule {}

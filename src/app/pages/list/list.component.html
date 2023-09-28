@@ -16,47 +16,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let product of pageData">
           <td class="logo">
-            <img src="{{ testImageUrl }}" />
+            <img src="{{ product.logo }}" />
           </td>
-          <td>Nombre del producto</td>
-          <td>Descripción producto</td>
-          <td>01/04/2023</td>
-          <td>01/04/2023</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.releaseCheck | date : "dd/MM/yyyy" }}</td>
+          <td>{{ product.reviewCheck | date : "dd/MM/yyyy" }}</td>
           <td class="actions">
             <app-dropdown-menu
-              id="1"
-              (onDelete)="delete($event)"
-            ></app-dropdown-menu>
-          </td>
-        </tr>
-        <tr>
-          <td class="logo">
-            <img src="{{ testImageUrl }}" />
-          </td>
-          <td>Nombre del producto</td>
-          <td>Descripción producto</td>
-          <td>01/04/2023</td>
-          <td>01/04/2023</td>
-          <td class="actions">
-            <app-dropdown-menu
-              id="2"
-              (onDelete)="delete($event)"
-            ></app-dropdown-menu>
-          </td>
-        </tr>
-        <tr>
-          <td class="logo">
-            <img src="{{ testImageUrl }}" />
-          </td>
-          <td>Nombre del producto</td>
-          <td>Descripción producto</td>
-          <td>01/04/2023</td>
-          <td>01/04/2023</td>
-          <td class="actions">
-            <app-dropdown-menu
-              id="3"
+              id="{{ product.id }}"
               (onDelete)="delete($event)"
             ></app-dropdown-menu>
           </td>
@@ -67,10 +37,13 @@
       <div class="total">
         <span>5 Resultados</span>
       </div>
-      <select class="pager">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
+      <select class="pager" (change)="onChangePage($event)">
+        <option
+          *ngFor="let item of [].constructor(pageCount); let i = index"
+          value="{{ i + 1 }}"
+        >
+          {{ i + 1 }}
+        </option>
       </select>
     </div>
   </div>
