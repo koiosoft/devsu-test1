@@ -45,6 +45,10 @@ export class ListComponent implements OnInit {
     return count >= 0 ? count : 0;
   }
 
+  get count(): number {
+    return this.products.length;
+  }
+
   delete(id: string) {
     //Deleting product
   }

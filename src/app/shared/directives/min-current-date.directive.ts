@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { AbstractControl, Validator, NG_VALIDATORS } from '@angular/forms';
 import * as moment from 'moment';

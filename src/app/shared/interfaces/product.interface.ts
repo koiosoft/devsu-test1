@@ -3,6 +3,7 @@ export interface IProduct {
   name: string;
   description: string;
   logo: string;
-  releaseCheck: Date | null;
-  reviewCheck: Date | null;
+  releaseCheck: string;
+  reviewCheck: string;
+  isNew: boolean;
 }

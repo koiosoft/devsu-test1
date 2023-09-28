@@ -76,6 +76,7 @@ div.container div.datagrid table tbody td.logo {
 
 div.container div.datagrid table tbody td.logo img {
   width: 70px;
+  margin: 5px;
 }
 
 div.container div.datagrid table tbody td.actions {

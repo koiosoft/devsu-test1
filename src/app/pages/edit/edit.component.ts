@@ -8,14 +8,19 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
+import { ProductService } from 'src/app/shared/services/product.service';
 
-const defaultProduct = {
+const successMessageTime = 2000;
+const failMessageTime = 5000;
+
+const defaultProduct: IProduct = {
   id: '',
   name: '',
   description: '',
   logo: '',
-  reviewCheck: null,
-  releaseCheck: null,
+  reviewCheck: '',
+  releaseCheck: '',
+  isNew: true,
 };
 
 @Component({
@@ -29,26 +34,47 @@ export class EditComponent {
   failed: boolean = false;
   submited: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private productService: ProductService) {
     this.product = defaultProduct;
   }
 
   onSubmit(f: NgForm) {
-    console.log('on Submit', f);
-
     for (var name in f.controls) {
       f.controls[name].markAsTouched({ onlySelf: true });
     }
     if (f.valid) {
       f.control.disable();
-      this.success = true;
-      setTimeout(() => {
-        this.router.navigate(['/products']);
-      }, 3000);
+      this.productService.save(this.product).subscribe((success) => {
+        if (success) {
+          this.launchSuccessEvent();
+        } else {
+          this.launchFailEvent();
+        }
+      });
     }
   }
 
+  launchSuccessEvent() {
+    this.success = true;
+    this.return(successMessageTime);
+  }
+
+  launchFailEvent() {
+    this.failed = true;
+    setTimeout(() => {
+      this.failed = false;
+    }, failMessageTime);
+  }
+
+  return(time: number = 0) {
+    setTimeout(() => {
+      this.router.navigate(['/products']);
+    }, time);
+  }
+
   reset(f: NgForm) {
+    this.failed = false;
+    this.success = false;
     f.reset();
     f.resetForm();
   }
