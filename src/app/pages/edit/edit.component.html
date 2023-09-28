@@ -106,6 +106,14 @@
               }}</span>
             </div>
           </div>
+          <div class="response">
+            <div class="success" *ngIf="success">
+              Se han procesado los datos correctamente.
+            </div>
+            <div class="fail" *ngIf="failed">
+              Hubo un problema para enviando los datos, intente más tarde.
+            </div>
+          </div>
           <div class="tools">
             <button type="button" (click)="reset(productForm)">
               Reiniciar

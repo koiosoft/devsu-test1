@@ -6,6 +6,7 @@ import {
   NgModel,
   ValidatorFn,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 
 const defaultProduct = {
@@ -24,14 +25,26 @@ const defaultProduct = {
 })
 export class EditComponent {
   product: IProduct;
+  success: boolean = false;
+  failed: boolean = false;
+  submited: boolean = false;
 
-  constructor() {
+  constructor(private router: Router) {
     this.product = defaultProduct;
   }
 
   onSubmit(f: NgForm) {
+    console.log('on Submit', f);
+
     for (var name in f.controls) {
       f.controls[name].markAsTouched({ onlySelf: true });
+    }
+    if (f.valid) {
+      f.control.disable();
+      this.success = true;
+      setTimeout(() => {
+        this.router.navigate(['/products']);
+      }, 3000);
     }
   }
 

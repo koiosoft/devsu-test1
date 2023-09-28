@@ -107,3 +107,23 @@ div.container button.submit {
   border-radius: 5px;
   margin: 10px;
 }
+
+div.response {
+  width: 100%;
+}
+
+div.response div {
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.success {
+  background-color: #00ff0055;
+  color: darkgreen;
+}
+
+div.fail {
+  background-color: #ff000055;
+  color: darkred;
+}
