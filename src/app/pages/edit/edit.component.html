@@ -97,6 +97,7 @@
                 [(ngModel)]="product.reviewCheck"
                 [class.error]="hasErrors(reviewCheck)"
                 min="{{ minDateReview }}"
+                [disabled]="isWellFilled(releaseCheck)"
                 date-range-constraint
                 required
               />

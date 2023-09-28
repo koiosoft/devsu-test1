@@ -79,4 +79,8 @@ export class EditComponent {
   get minDateReview(): Date {
     return new Date(this.minDateRelease.getTime() + 1000 * 60 * 60 * 24 * 365);
   }
+
+  isWellFilled(field: NgModel): boolean {
+    return field.value == null || this.hasErrors(field);
+  }
 }
