@@ -42,7 +42,13 @@ export class ListComponent implements OnInit {
 
   get pageCount() {
     const count = Math.ceil(this.products.length / pageSize) - 1;
-    return count >= 0 ? count : 0;
+    console.log('pageCount count ', count);
+    if(count === 0){
+      return 1
+    }else if(count > 0){
+      return count;
+    }
+    return 0;
   }
 
   get count(): number {
