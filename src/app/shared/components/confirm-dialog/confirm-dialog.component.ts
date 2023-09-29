@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ConfirmDialogService } from './confirm-dialog.service';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -6,28 +7,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./confirm-dialog.component.css'],
 })
 export class ConfirmDialogComponent {
-  _showModal = false;
+  constructor(private stateHandler: ConfirmDialogService) {}
 
-  @Input('message')
-  message = '';
-
-  @Output('onconfirm') confirmEvent = new EventEmitter<string>();
-
-  get showModal() {
-    return this._showModal;
+  get showing() {
+    return this.stateHandler.showing;
   }
 
-  @Input('show')
-  set showModal(value: any) {
-    this._showModal = Boolean(value);
+  get message() {
+    return this.stateHandler.message;
   }
 
   close() {
-    this.showModal = false;
+    this.stateHandler.close();
   }
 
   confirm() {
-    console.log('paso');
-    this.confirmEvent.emit('idididi');
+    this.stateHandler.execute();
+    this.stateHandler.close();
   }
 }

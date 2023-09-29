@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmDialogService } from 'src/app/shared/components/confirm-dialog/confirm-dialog.service';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -18,10 +19,11 @@ export class ListComponent implements OnInit {
   loading: boolean = true;
   currentPage: number = 0;
   search: string = '';
-  showConfirm: boolean = false;
-  private productToDelete: IProduct | null = null;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private confirmDialog: ConfirmDialogService
+  ) {}
 
   ngOnInit(): void {
     this.productService.fetch().subscribe((data) => {
@@ -61,20 +63,13 @@ export class ListComponent implements OnInit {
   }
 
   confirmDelete(id: string) {
-    const found = this.products.find((product) => product.id === id);
-    if (found) {
-      this.productToDelete = found;
-      this.showConfirm = true;
+    const productToDelete = this.products.find((product) => product.id === id);
+    if (productToDelete) {
+      const messageConfirmation = `¿Estas seguro que quieres eliminar el producto: <b>${productToDelete.name}<b>?`;
+      this.confirmDialog.open(messageConfirmation, () => {
+        //executing delete action
+      });
     }
-  }
-
-  delete() {
-    //Deleting product
-    console.log(
-      'Deleting product id',
-      this.productToDelete?.id,
-      this.productToDelete?.name
-    );
   }
 
   onChangePage(event: Event) {
@@ -94,12 +89,5 @@ export class ListComponent implements OnInit {
     } else {
       this._products = this.source;
     }
-  }
-
-  get confirmationMessage() {
-    if (this.productToDelete) {
-      return `¿Estas seguro que quieres eliminar el producto: <b>${this.productToDelete.name}<b>?`;
-    }
-    return '';
   }
 }

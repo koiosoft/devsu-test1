@@ -7,6 +7,7 @@ import { DateRangeContraintDirective } from './directives/min-current-date.direc
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogService } from './components/confirm-dialog/confirm-dialog.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ConfirmDialogComponent,
   ],
   imports: [CommonModule, RouterModule, HttpClientModule],
-  providers: [ProductService],
+  providers: [ProductService, ConfirmDialogService],
   exports: [
     DropdownMenuComponent,
     DateRangeContraintDirective,
