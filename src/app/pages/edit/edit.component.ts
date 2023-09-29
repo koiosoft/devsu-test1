@@ -34,25 +34,26 @@ export class EditComponent {
   success: boolean = false;
   failed: boolean = false;
   submited: boolean = false;
+  loading: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) {
-    this
-    .route
-    .params.subscribe((params)=>{
-      const {id} = params;
-      if(id==='new'){
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {
+    this.route.params.subscribe((params) => {
+      const { id } = params;
+      if (id === 'new') {
         this.product = defaultProduct;
-      }else{
+      } else {
         const found = this.productService.findById(id);
-        if(found){
+        if (found) {
           this.product = found;
-        }else{
+        } else {
           this.return();
         }
       }
-    })
-    
-
+    });
   }
 
   onSubmit(f: NgForm) {
@@ -61,12 +62,15 @@ export class EditComponent {
     }
     if (f.valid && this.product) {
       f.control.disable();
-      this.productService.save(this.product).subscribe((success) => {
-        if (success) {
-          this.launchSuccessEvent();
-        } else {
+      this.productService.save(this.product).subscribe({
+        next: (success) => {
+          if (success) {
+            this.launchSuccessEvent();
+          }
+        },
+        error: (e) => {
           this.launchFailEvent();
-        }
+        },
       });
     }
   }

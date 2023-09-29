@@ -78,13 +78,23 @@ export class ProductService {
     const { id, name, description, logo, releaseCheck, reviewCheck, isNew } =
       product;
 
-    const data = {
+    /*const data = {
       id,
       name,
       description,
       logo,
       date_release: this.parseToDate(releaseCheck),
       date_revision: this.parseToDate(reviewCheck),
+    };*/
+
+    const data = {
+      id: '00046',
+      name: 'Awesome Concrete Pants 46',
+      description:
+        "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      logo: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1124.jpg',
+      date_release: '2024-01-26T11:23:53.006Z',
+      date_revision: '2024-10-03T20:23:11.316Z',
     };
 
     if (isNew) {
