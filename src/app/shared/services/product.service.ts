@@ -112,9 +112,9 @@ export class ProductService {
       .pipe(mapSuccess);
   }
 
-  verificateId(id: string): Observable<any> {
+  checkIdAvailable(id: string): Observable<any> {
     const headers = new HttpHeaders()
-      .set('Accept', 'text/html')
+      .set('Accept', 'application/json')
       .set('authorId', authorId);
     let params = new HttpParams().append('id', id);
     return this.http
@@ -126,10 +126,7 @@ export class ProductService {
       })
       .pipe(
         map((result: HttpResponse<any>) => {
-          if (result.status === 200) {
-            console.log('result.body', result.body);
-          }
-          return result.status === 200;
+          return result.status === 200 && !Boolean(result.body);
         })
       );
   }

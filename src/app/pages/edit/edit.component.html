@@ -24,6 +24,7 @@
               <span class="error" *ngIf="hasErrors(id)">{{
                 getErrorField(id)
               }}</span>
+              <span class="error" *ngIf="hasErrorID(id)">El ID ya existe</span>
             </div>
             <div class="field">
               <label>Nombre</label>
@@ -115,7 +116,7 @@
               Se han procesado los datos correctamente.
             </div>
             <div class="fail" *ngIf="failed">
-              Hubo un problema para guardando los datos, intente más tarde
+              Hubo un problema para enviando los datos, intente más tarde
               verificando los datos.
             </div>
           </div>

@@ -56,12 +56,32 @@ export class EditComponent {
     });
   }
 
-  onSubmit(f: NgForm) {
-    /* for (var name in f.controls) {
-      f.controls[name].markAsTouched({ onlySelf: true });
+  onSubmit(form: NgForm) {
+    if (!this.product!.isNew) {
+      this.save(form);
+    } else {
+      this.productService.checkIdAvailable(this.product!.id).subscribe({
+        next: (isAvailable) => {
+          if (isAvailable) {
+            this.save(form);
+          } else {
+            form.form.controls['id'].setErrors({ exist: true });
+            this.launchFailEvent();
+          }
+        },
+        error: (e) => {
+          this.launchFailEvent();
+        },
+      });
     }
-    if (f.valid && this.product) {
-      f.control.disable();
+  }
+
+  save(form: NgForm) {
+    for (var name in form.controls) {
+      form.controls[name].markAsTouched({ onlySelf: true });
+    }
+    if (form.valid && this.product) {
+      form.control.disable();
       this.productService.save(this.product).subscribe({
         next: (success) => {
           if (success) {
@@ -69,20 +89,6 @@ export class EditComponent {
           }
         },
         error: (e) => {
-          this.launchFailEvent();
-        },
-      });
-    }*/
-    if (this.product) {
-      this.productService.verificateId(this.product.id).subscribe({
-        next: (success) => {
-          console.log('success', success);
-          if (success) {
-            this.launchSuccessEvent();
-          }
-        },
-        error: (e) => {
-          console.log('error', e);
           this.launchFailEvent();
         },
       });
@@ -118,6 +124,17 @@ export class EditComponent {
 
   hasErrors(field: NgModel) {
     if (field.invalid && (field.dirty || field.touched)) {
+      return true;
+    }
+    return false;
+  }
+
+  hasErrorID(field: NgModel) {
+    if (
+      field.hasError('exist') &&
+      field.errors &&
+      Object.keys(field.errors as any).length === 1
+    ) {
       return true;
     }
     return false;
