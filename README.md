@@ -1,27 +1,39 @@
-# DevsuProject
+Proyecto Angular
+Este es un proyecto Angular que sirve como ejemplo de cómo crear un README para un proyecto Angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+# Descripción
 
-## Development server
+Este proyecto es un simple ejemplo de una aplicación web Angular. La aplicación muestra una lista de productos y permite a los usuarios agregar, editar y eliminar productos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalación y ejecución
 
-## Code scaffolding
+Para instalar y ejecutar el proyecto, siga estos pasos:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1. Clona el proyecto en tu computadora:
 
-## Build
+git clone https://github.com/[tu-nombre]/[nombre-del-proyecto].git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 2. Entra en el directorio del proyecto:
 
-## Running unit tests
+cd [nombre-del-proyecto]
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 3. Instala las dependencias:
 
-## Running end-to-end tests
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 4. Ejecuta el servidor:
 
-## Further help
+npx ng serve
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## El servidor se iniciará en http://localhost:4200/.
+
+## Características principales
+
+- Lista de productos
+- Agregar productos
+- Editar productos
+- Eliminar productos
+
+## Licencia
+
+Este proyecto está licenciado bajo la licencia MIT.
