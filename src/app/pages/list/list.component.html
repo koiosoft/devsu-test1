@@ -29,7 +29,7 @@
           <td class="actions">
             <app-dropdown-menu
               id="{{ product.id }}"
-              (onDelete)="delete($event)"
+              (onDelete)="confirmDelete($event)"
             ></app-dropdown-menu>
           </td>
         </tr>
@@ -49,20 +49,9 @@
       </select>
     </div>
   </div>
-  <button (click)="onShowModal()">Show Modal</button>
-  <!-- The Modal -->
-  <div id="myModal" class="modal" [style]="showModal ? 'display:block' : ''">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="message">
-        <p>
-          ¿Estas seguro que quieres eliminar el producto [Titulo del Producto]?
-        </p>
-      </div>
-      <div class="buttons">
-        <button class="cancel" (click)="closeModal()">Cancelar</button>
-        <button class="confirm">Confirmar</button>
-      </div>
-    </div>
-  </div>
+  <app-confirm-dialog
+    [show]="showConfirm"
+    [message]="confirmationMessage"
+    (onconfirm)="delete()"
+  ></app-confirm-dialog>
 </div>

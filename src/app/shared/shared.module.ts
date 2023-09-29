@@ -6,12 +6,14 @@ import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.
 import { DateRangeContraintDirective } from './directives/min-current-date.directive';
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     DropdownMenuComponent,
     DateRangeContraintDirective,
+    ConfirmDialogComponent,
   ],
   imports: [CommonModule, RouterModule, HttpClientModule],
   providers: [ProductService],
@@ -19,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     DropdownMenuComponent,
     DateRangeContraintDirective,
     HttpClientModule,
+    ConfirmDialogComponent,
   ],
 })
 export class SharedModule {}

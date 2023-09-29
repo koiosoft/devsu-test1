@@ -18,8 +18,8 @@ export class ListComponent implements OnInit {
   loading: boolean = true;
   currentPage: number = 0;
   search: string = '';
-
-  showModal = true;
+  showConfirm: boolean = false;
+  private productToDelete: IProduct | null = null;
 
   constructor(private productService: ProductService) {}
 
@@ -44,24 +44,37 @@ export class ListComponent implements OnInit {
 
   get pageCount() {
     const count = Math.ceil(this.products.length / pageSize) - 1;
-    if(count === 0){
-      return 1
-    }else if(count > 0){
+    if (count === 0) {
+      return 1;
+    } else if (count > 0) {
       return count;
     }
     return 0;
   }
 
-  get showPager(){
-    return this.pageCount>1;
+  get showPager() {
+    return this.pageCount > 1;
   }
 
   get count(): number {
     return this.products.length;
   }
 
-  delete(id: string) {
+  confirmDelete(id: string) {
+    const found = this.products.find((product) => product.id === id);
+    if (found) {
+      this.productToDelete = found;
+      this.showConfirm = true;
+    }
+  }
+
+  delete() {
     //Deleting product
+    console.log(
+      'Deleting product id',
+      this.productToDelete?.id,
+      this.productToDelete?.name
+    );
   }
 
   onChangePage(event: Event) {
@@ -83,11 +96,10 @@ export class ListComponent implements OnInit {
     }
   }
 
-  closeModal(){
-    this.showModal = false;
-  }
-
-  onShowModal(){
-    this.showModal = true;
+  get confirmationMessage() {
+    if (this.productToDelete) {
+      return `¿Estas seguro que quieres eliminar el producto: <b>${this.productToDelete.name}<b>?`;
+    }
+    return '';
   }
 }
