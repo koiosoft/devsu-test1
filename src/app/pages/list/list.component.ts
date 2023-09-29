@@ -19,6 +19,8 @@ export class ListComponent implements OnInit {
   currentPage: number = 0;
   search: string = '';
 
+  showModal = true;
+
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
@@ -79,5 +81,13 @@ export class ListComponent implements OnInit {
     } else {
       this._products = this.source;
     }
+  }
+
+  closeModal(){
+    this.showModal = false;
+  }
+
+  onShowModal(){
+    this.showModal = true;
   }
 }

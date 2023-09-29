@@ -1,7 +1,9 @@
 <div class="container">
   <div class="tools">
     <input type="text" placeholder="Search ..." (input)="onSearch($event)" />
-    <button [routerLink]="['../products', 'new']">Agregar</button>
+    <button class="action" [routerLink]="['../products', 'new']">
+      Agregar
+    </button>
   </div>
   <div class="datagrid">
     <table>
@@ -22,8 +24,8 @@
           </td>
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
-          <td>{{ product.releaseCheck  }}</td>
-          <td>{{ product.reviewCheck  }}</td>
+          <td>{{ product.releaseCheck }}</td>
+          <td>{{ product.reviewCheck }}</td>
           <td class="actions">
             <app-dropdown-menu
               id="{{ product.id }}"
@@ -45,6 +47,22 @@
           Página {{ i + 1 }}
         </option>
       </select>
+    </div>
+  </div>
+  <button (click)="onShowModal()">Show Modal</button>
+  <!-- The Modal -->
+  <div id="myModal" class="modal" [style]="showModal ? 'display:block' : ''">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="message">
+        <p>
+          ¿Estas seguro que quieres eliminar el producto [Titulo del Producto]?
+        </p>
+      </div>
+      <div class="buttons">
+        <button class="cancel" (click)="closeModal()">Cancelar</button>
+        <button class="confirm">Confirmar</button>
+      </div>
     </div>
   </div>
 </div>
