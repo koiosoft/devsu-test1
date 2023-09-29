@@ -132,7 +132,7 @@ export class EditComponent {
   getErrorField(field: NgModel) {
     if (field.invalid && (field.dirty || field.touched)) {
       return `${this.getErrorLabel(
-        field.hasError('exist') ? 'unavailableId' : field.name
+        field.hasError('exist') ? 'idUnabled' : field.name
       )}`;
     }
     return '';
@@ -140,7 +140,7 @@ export class EditComponent {
 
   getErrorLabel(fieldName: string) {
     switch (fieldName) {
-      case 'unavailableId':
+      case 'idUnabled':
         return 'El ID ya existe!';
       case 'id':
         return 'ID no válido!';
