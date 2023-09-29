@@ -67,7 +67,13 @@ export class ListComponent implements OnInit {
     if (productToDelete) {
       const messageConfirmation = `¿Estas seguro que quieres eliminar el producto: <b>${productToDelete.name}<b>?`;
       this.confirmDialog.open(messageConfirmation, () => {
-        //executing delete action
+        this.productService.delete(productToDelete).subscribe((success) => {
+          if (success) {
+            console.log('Launch delete success');
+          } else {
+            console.log('Launch delete failed');
+          }
+        });
       });
     }
   }

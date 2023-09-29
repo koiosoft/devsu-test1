@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
 import { EMPTY, Observable, map } from 'rxjs';
 import * as moment from 'moment';
 import { IProduct } from '../interfaces/product.interface';
@@ -49,8 +54,8 @@ export class ProductService {
       );
   }
 
-  findById(id:string): IProduct | undefined{
-    return this.list.find(product=>product.id===id);
+  findById(id: string): IProduct | undefined {
+    return this.list.find((product) => product.id === id);
   }
 
   save(product: IProduct): Observable<any> {
@@ -68,10 +73,28 @@ export class ProductService {
 
     if (isNew) {
       return this.http
-        .post<any>(this.url, data, { headers, observe: 'response' })
+        .post(this.url, data, { headers, observe: 'response' })
         .pipe(mapSuccess);
     }
-    return this.http.put<any>(this.url, data, { headers, observe: 'response' }).pipe(mapSuccess);
+    return this.http
+      .put(this.url, data, { headers, observe: 'response' })
+      .pipe(mapSuccess);
+  }
+
+  delete(product: IProduct): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Accept', 'text/html')
+      .set('authorId', authorId);
+    const { id } = product;
+    let params = new HttpParams().append('id', id);
+    return this.http
+      .delete(this.url, {
+        headers,
+        observe: 'response',
+        params,
+        responseType: 'text',
+      })
+      .pipe(mapSuccess);
   }
 
   parseFromDate(value: Date): string {
