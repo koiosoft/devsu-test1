@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
   loading: boolean = true;
   currentPage: number = 0;
   search: string = '';
+  deletionSuccessful: boolean | null = null;
 
   constructor(
     private productService: ProductService,
@@ -66,15 +67,28 @@ export class ListComponent implements OnInit {
     if (productToDelete) {
       const messageConfirmation = `¿Estas seguro que quieres eliminar el producto: <b>${productToDelete.name}<b>?`;
       this.confirmDialog.open(messageConfirmation, () => {
-        this.productService.delete(productToDelete).subscribe((success) => {
-          if (success) {
-            console.log('Launch delete success');
-          } else {
-            console.log('Launch delete failed');
-          }
+        this.productService.delete(productToDelete).subscribe({
+          next: (success) => {
+            if (success) {
+              this.deletionSuccessful = true;
+            }
+          },
+          error: (e) => {
+            this.deletionSuccessful = false;
+            this.clearDeleteMessages();
+          },
+          complete: () => {
+            this.clearDeleteMessages();
+          },
         });
       });
     }
+  }
+
+  clearDeleteMessages() {
+    setTimeout(() => {
+      this.deletionSuccessful = null;
+    }, 2000);
   }
 
   onChangePage(event: Event) {
@@ -83,5 +97,9 @@ export class ListComponent implements OnInit {
 
   onSearch(event: Event) {
     this.productService.filter((event.target as HTMLInputElement).value);
+  }
+
+  get showDeleteResponse() {
+    return this.deletionSuccessful !== null;
   }
 }

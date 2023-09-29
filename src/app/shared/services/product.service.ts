@@ -5,11 +5,12 @@ import {
   HttpParams,
   HttpResponse,
 } from '@angular/common/http';
-import { EMPTY, Observable, map } from 'rxjs';
+import { EMPTY, Observable, catchError, map } from 'rxjs';
 import * as moment from 'moment';
 import { IProduct } from '../interfaces/product.interface';
 
 const mapSuccess = map((result: HttpResponse<any>) => {
+  console.log('result.status  ', result.status);
   return result.status === 200;
 });
 

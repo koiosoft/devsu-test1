@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="response" *ngIf="showDeleteResponse">
+    <div class="success" *ngIf="deletionSuccessful">
+      Se han borrado el producto exitosamente.
+    </div>
+    <div class="fail" *ngIf="!deletionSuccessful">
+      Hubo un problema borrando el registro, intente más tarde.
+    </div>
+  </div>
   <div class="tools">
     <input type="text" placeholder="Search ..." (input)="onSearch($event)" />
     <button class="action" [routerLink]="['../products', 'new']">

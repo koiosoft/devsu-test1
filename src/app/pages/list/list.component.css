@@ -137,3 +137,23 @@ div.container div.datagrid div.footer div.total {
   align-items: center;
   padding-left: 15px;
 }
+
+div.response {
+  width: 100%;
+}
+
+div.response div {
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.success {
+  background-color: #00ff0055;
+  color: darkgreen;
+}
+
+div.fail {
+  background-color: #ff000055;
+  color: darkred;
+}
