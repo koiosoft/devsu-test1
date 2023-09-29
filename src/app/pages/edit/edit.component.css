@@ -25,6 +25,7 @@ button:focus {
 div.container div.tools {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 div.row {
@@ -126,4 +127,17 @@ div.success {
 div.fail {
   background-color: #ff000055;
   color: darkred;
+}
+
+div.navigation-bar {
+  display: flex;
+  text-align: left;
+  width: 100%;
+  padding-left: 100px;
+  color: navy;
+}
+
+button.go-back {
+  background-color: white !important;
+  border: 1px solid lightgrey !important;
 }

@@ -120,9 +120,17 @@
             </div>
           </div>
           <div class="tools">
+            <button
+              type="button"
+              [routerLink]="['../products']"
+              class="go-back"
+            >
+              Cancelar
+            </button>
             <button type="button" (click)="reset(productForm)">
               Reiniciar
             </button>
+
             <button class="submit">Enviar</button>
           </div>
         </form>
