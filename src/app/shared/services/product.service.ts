@@ -37,8 +37,8 @@ export class ProductService {
     this.search = search.trim().toLowerCase();
     this.filteredData = this.data.filter(
       (p) =>
-        p.name.toLowerCase().indexOf(search) > -1 ||
-        p.description.toLowerCase().indexOf(search) > -1
+        p.name.toLowerCase().indexOf(this.search) > -1 ||
+        p.description.toLowerCase().indexOf(this.search) > -1
     );
   }
 

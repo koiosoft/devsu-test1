@@ -29,7 +29,6 @@ export class ListComponent implements OnInit {
     this.productService.fetch().subscribe((data) => {
       if (data) {
         this.loading = false;
-
         this.source = data;
       }
     });
