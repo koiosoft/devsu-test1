@@ -23,9 +23,24 @@ const headers = new HttpHeaders()
   providedIn: 'root',
 })
 export class ProductService {
-  private list: IProduct[] = [];
+  private data: IProduct[] = [];
+  private filteredData: IProduct[] = [];
+  private search: string = '';
 
   constructor(private http: HttpClient) {}
+
+  get list() {
+    return this.search === '' ? this.data : this.filteredData;
+  }
+
+  filter(search: string) {
+    this.search = search.trim().toLowerCase();
+    this.filteredData = this.data.filter(
+      (p) =>
+        p.name.toLowerCase().indexOf(search) > -1 ||
+        p.description.toLowerCase().indexOf(search) > -1
+    );
+  }
 
   fetch(): Observable<IProduct[] | undefined> {
     return this.http
@@ -48,14 +63,14 @@ export class ProductService {
               reviewCheck: this.parseFromDate(date_revision),
             } as IProduct;
           });
-          this.list = result as IProduct[];
+          this.data = result as IProduct[];
           return result;
         })
       );
   }
 
   findById(id: string): IProduct | undefined {
-    return this.list.find((product) => product.id === id);
+    return this.data.find((product) => product.id === id);
   }
 
   save(product: IProduct): Observable<any> {

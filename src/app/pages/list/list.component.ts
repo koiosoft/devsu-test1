@@ -29,14 +29,14 @@ export class ListComponent implements OnInit {
     this.productService.fetch().subscribe((data) => {
       if (data) {
         this.loading = false;
-        this._products = data;
+
         this.source = data;
       }
     });
   }
 
   get products() {
-    return this._products;
+    return this.productService.list;
   }
 
   get pageData() {
@@ -83,17 +83,6 @@ export class ListComponent implements OnInit {
   }
 
   onSearch(event: Event) {
-    const search: string = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
-    if (search !== '') {
-      this._products = this.source.filter(
-        (p) =>
-          p.name.toLowerCase().indexOf(search) > -1 ||
-          p.description.toLowerCase().indexOf(search) > -1
-      );
-    } else {
-      this._products = this.source;
-    }
+    this.productService.filter((event.target as HTMLInputElement).value);
   }
 }
