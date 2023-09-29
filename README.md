@@ -9,23 +9,23 @@ Este proyecto es un simple ejemplo de una aplicación web Angular. La aplicació
 
 Para instalar y ejecutar el proyecto, siga estos pasos:
 
-### 1. Clona el proyecto en tu computadora:
+1. Clona el proyecto en tu computadora:
 
 git clone https://github.com/[tu-nombre]/[nombre-del-proyecto].git
 
-## 2. Entra en el directorio del proyecto:
+2. Entra en el directorio del proyecto:
 
 cd [nombre-del-proyecto]
 
-## 3. Instala las dependencias:
+3. Instala las dependencias:
 
 npm install
 
-## 4. Ejecuta el servidor:
+4. Ejecuta el servidor:
 
 npx ng serve
 
-## El servidor se iniciará en http://localhost:4200/.
+El servidor se iniciará en http://localhost:4200/.
 
 ## Características principales
 
