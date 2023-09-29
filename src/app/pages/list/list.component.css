@@ -143,7 +143,7 @@ div.container div.datagrid div.footer div.total {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: calc(50vh - 200px); /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -157,11 +157,11 @@ div.container div.datagrid div.footer div.total {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-
   border: 1px solid #888;
-  width: 50%;
+  width: 40%;
   border-radius: 10px;
   min-height: 200px;
+  max-width: 600px;
 }
 
 div.modal-content div.buttons {
