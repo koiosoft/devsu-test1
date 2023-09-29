@@ -129,26 +129,19 @@ export class EditComponent {
     return false;
   }
 
-  hasErrorID(field: NgModel) {
-    if (
-      field.hasError('exist') &&
-      field.errors &&
-      Object.keys(field.errors as any).length === 1
-    ) {
-      return true;
-    }
-    return false;
-  }
-
   getErrorField(field: NgModel) {
     if (field.invalid && (field.dirty || field.touched)) {
-      return `${this.getErrorLabel(field.name)}`;
+      return `${this.getErrorLabel(
+        field.hasError('exist') ? 'unavailableId' : field.name
+      )}`;
     }
     return '';
   }
 
   getErrorLabel(fieldName: string) {
     switch (fieldName) {
+      case 'unavailableId':
+        return 'El ID ya existe!';
       case 'id':
         return 'ID no válido!';
       case 'name':
