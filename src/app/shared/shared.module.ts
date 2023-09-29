@@ -8,6 +8,7 @@ import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from './components/confirm-dialog/confirm-dialog.service';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ConfirmDialogService } from './components/confirm-dialog/confirm-dialog
     DropdownMenuComponent,
     DateRangeContraintDirective,
     ConfirmDialogComponent,
+    ProgressBarComponent,
   ],
   imports: [CommonModule, RouterModule, HttpClientModule],
   providers: [ProductService, ConfirmDialogService],
@@ -23,6 +25,7 @@ import { ConfirmDialogService } from './components/confirm-dialog/confirm-dialog
     DateRangeContraintDirective,
     HttpClientModule,
     ConfirmDialogComponent,
+    ProgressBarComponent,
   ],
 })
 export class SharedModule {}

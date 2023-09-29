@@ -14,9 +14,7 @@
     </button>
   </div>
   <div class="datagrid">
-    <div *ngIf="loading" class="loader">
-      <div class="loaderBar"></div>
-    </div>
+    <app-progress-bar [show]="loading"></app-progress-bar>
     <table>
       <thead>
         <tr>
