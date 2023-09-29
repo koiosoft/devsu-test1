@@ -4,6 +4,10 @@ import { EMPTY, Observable, map } from 'rxjs';
 import * as moment from 'moment';
 import { IProduct } from '../interfaces/product.interface';
 
+const mapSuccess = map((result: HttpResponse<any>) => {
+  return result.status === 200;
+});
+
 const authorId = '33';
 
 const headers = new HttpHeaders()
@@ -35,43 +39,47 @@ export class ProductService {
               name,
               description,
               logo,
-              releaseCheck: date_release,
-              reviewCheck: date_revision,
+              releaseCheck: this.parseFromDate(date_release),
+              reviewCheck: this.parseFromDate(date_revision),
             } as IProduct;
           });
+          this.list = result as IProduct[];
           return result;
         })
       );
   }
 
+  findById(id:string): IProduct | undefined{
+    return this.list.find(product=>product.id===id);
+  }
+
   save(product: IProduct): Observable<any> {
-    const mapSuccess = map((result: HttpResponse<any>) => {
-      if (result.status === 200) {
-        return true;
-      }
-      return false;
-    });
     const { id, name, description, logo, releaseCheck, reviewCheck, isNew } =
       product;
+
     const data = {
       id,
       name,
       description,
-      // logo,
-      date_release: this.parseDate(releaseCheck),
-      date_revision: this.parseDate(reviewCheck),
+      logo,
+      date_release: this.parseToDate(releaseCheck),
+      date_revision: this.parseToDate(reviewCheck),
     };
+
     if (isNew) {
       return this.http
         .post<any>(this.url, data, { headers, observe: 'response' })
         .pipe(mapSuccess);
     }
-    return this.http.put<any>(this.url, data, { headers }).pipe(mapSuccess);
+    return this.http.put<any>(this.url, data, { headers, observe: 'response' }).pipe(mapSuccess);
   }
 
-  parseDate(value: string): Date {
-    const momentValue = moment(value, 'DD/MM/YYYY', true);
-    return momentValue.toDate();
+  parseFromDate(value: Date): string {
+    return moment(value).format('DD/MM/YYYY');
+  }
+
+  parseToDate(value: string): string {
+    return moment(value, 'DD/MM/YYYY', true).format('YYYY-MM-DD');
   }
 
   private get url() {

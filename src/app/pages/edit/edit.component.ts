@@ -6,7 +6,8 @@ import {
   NgModel,
   ValidatorFn,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -29,20 +30,36 @@ const defaultProduct: IProduct = {
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent {
-  product: IProduct;
+  product: IProduct | null = null;
   success: boolean = false;
   failed: boolean = false;
   submited: boolean = false;
 
-  constructor(private router: Router, private productService: ProductService) {
-    this.product = defaultProduct;
+  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) {
+    this
+    .route
+    .params.subscribe((params)=>{
+      const {id} = params;
+      if(id==='new'){
+        this.product = defaultProduct;
+      }else{
+        const found = this.productService.findById(id);
+        if(found){
+          this.product = found;
+        }else{
+          this.return();
+        }
+      }
+    })
+    
+
   }
 
   onSubmit(f: NgForm) {
     for (var name in f.controls) {
       f.controls[name].markAsTouched({ onlySelf: true });
     }
-    if (f.valid) {
+    if (f.valid && this.product) {
       f.control.disable();
       this.productService.save(this.product).subscribe((success) => {
         if (success) {

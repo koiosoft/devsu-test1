@@ -42,7 +42,6 @@ export class ListComponent implements OnInit {
 
   get pageCount() {
     const count = Math.ceil(this.products.length / pageSize) - 1;
-    console.log('pageCount count ', count);
     if(count === 0){
       return 1
     }else if(count > 0){

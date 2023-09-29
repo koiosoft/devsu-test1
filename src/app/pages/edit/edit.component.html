@@ -1,7 +1,9 @@
 <div class="container">
   <div class="wrapper">
-    <div class="form">
-      <div class="header"><h2>Formulario de Registro</h2></div>
+    <div *ngIf="product" class="form">
+      <div class="header">
+        <h2>Formulario de Registro</h2>
+      </div>
       <div class="body">
         <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
           <div class="row">

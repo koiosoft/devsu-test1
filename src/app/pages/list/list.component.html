@@ -22,8 +22,8 @@
           </td>
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
-          <td>{{ product.releaseCheck | date : "dd/MM/yyyy" }}</td>
-          <td>{{ product.reviewCheck | date : "dd/MM/yyyy" }}</td>
+          <td>{{ product.releaseCheck  }}</td>
+          <td>{{ product.reviewCheck  }}</td>
           <td class="actions">
             <app-dropdown-menu
               id="{{ product.id }}"
