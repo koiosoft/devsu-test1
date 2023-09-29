@@ -10,7 +10,6 @@ import * as moment from 'moment';
 import { IProduct } from '../interfaces/product.interface';
 
 const mapSuccess = map((result: HttpResponse<any>) => {
-  console.log('result.status  ', result.status);
   return result.status === 200;
 });
 
@@ -111,6 +110,28 @@ export class ProductService {
         responseType: 'text',
       })
       .pipe(mapSuccess);
+  }
+
+  verificateId(id: string): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Accept', 'text/html')
+      .set('authorId', authorId);
+    let params = new HttpParams().append('id', id);
+    return this.http
+      .get(`${this.url}/verification`, {
+        headers,
+        observe: 'response',
+        params,
+        responseType: 'text',
+      })
+      .pipe(
+        map((result: HttpResponse<any>) => {
+          if (result.status === 200) {
+            console.log('result.body', result.body);
+          }
+          return result.status === 200;
+        })
+      );
   }
 
   parseFromDate(value: Date): string {

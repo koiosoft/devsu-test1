@@ -4,6 +4,7 @@
       <div class="header">
         <h2>Formulario de Registro</h2>
       </div>
+      <app-progress-bar [show]="loading"></app-progress-bar>
       <div class="body">
         <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
           <div class="row">
@@ -18,6 +19,7 @@
                 minlength="3"
                 maxlength="10"
                 required
+                [disabled]="isEditing"
               />
               <span class="error" *ngIf="hasErrors(id)">{{
                 getErrorField(id)

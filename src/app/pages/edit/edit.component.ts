@@ -57,7 +57,7 @@ export class EditComponent {
   }
 
   onSubmit(f: NgForm) {
-    for (var name in f.controls) {
+    /* for (var name in f.controls) {
       f.controls[name].markAsTouched({ onlySelf: true });
     }
     if (f.valid && this.product) {
@@ -72,15 +72,31 @@ export class EditComponent {
           this.launchFailEvent();
         },
       });
+    }*/
+    if (this.product) {
+      this.productService.verificateId(this.product.id).subscribe({
+        next: (success) => {
+          console.log('success', success);
+          if (success) {
+            this.launchSuccessEvent();
+          }
+        },
+        error: (e) => {
+          console.log('error', e);
+          this.launchFailEvent();
+        },
+      });
     }
   }
 
   launchSuccessEvent() {
+    this.loading = false;
     this.success = true;
     this.return(successMessageTime);
   }
 
   launchFailEvent() {
+    this.loading = false;
     this.failed = true;
     setTimeout(() => {
       this.failed = false;
@@ -142,5 +158,12 @@ export class EditComponent {
 
   isWellFilled(field: NgModel): boolean {
     return field.value == null || this.hasErrors(field);
+  }
+
+  get isEditing() {
+    if (this.product && !this.product.isNew) {
+      return true;
+    }
+    return false;
   }
 }
