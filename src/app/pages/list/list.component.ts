@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/shared/services/product.service';
 
 const pageSize = 6;
 
+const resultDeleteMessageTime = 1500;
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -27,6 +29,11 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.refresh();
+  }
+
+  refresh() {
+    this.productService.filter('');
     this.productService.fetch().subscribe((data) => {
       if (data) {
         this.loading = false;
@@ -67,28 +74,31 @@ export class ListComponent implements OnInit {
     if (productToDelete) {
       const messageConfirmation = `¿Estas seguro que quieres eliminar el producto: <b>${productToDelete.name}<b>?`;
       this.confirmDialog.open(messageConfirmation, () => {
+        this.loading = true;
         this.productService.delete(productToDelete).subscribe({
           next: (success) => {
             if (success) {
               this.deletionSuccessful = true;
+              this.refresh();
             }
           },
           error: (e) => {
+            this.loading = false;
             this.deletionSuccessful = false;
-            this.clearDeleteMessages();
+            this.finishDeleteAction();
           },
           complete: () => {
-            this.clearDeleteMessages();
+            this.finishDeleteAction();
           },
         });
       });
     }
   }
 
-  clearDeleteMessages() {
+  finishDeleteAction() {
     setTimeout(() => {
       this.deletionSuccessful = null;
-    }, 2000);
+    }, resultDeleteMessageTime);
   }
 
   onChangePage(event: Event) {
