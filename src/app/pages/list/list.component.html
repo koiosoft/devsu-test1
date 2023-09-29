@@ -37,12 +37,12 @@
       <div class="total">
         <span>{{ count }} Resultados</span>
       </div>
-      <select *ngIf="pageCount>1" class="pager" (change)="onChangePage($event)">
+      <select *ngIf="showPager" class="pager" (change)="onChangePage($event)">
         <option
           *ngFor="let item of [].constructor(pageCount); let i = index"
           value="{{ i + 1 }}"
         >
-          {{ i + 1 }}
+          Página {{ i + 1 }}
         </option>
       </select>
     </div>

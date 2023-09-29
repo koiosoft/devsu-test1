@@ -51,6 +51,10 @@ export class ListComponent implements OnInit {
     return 0;
   }
 
+  get showPager(){
+    return this.pageCount>1;
+  }
+
   get count(): number {
     return this.products.length;
   }
